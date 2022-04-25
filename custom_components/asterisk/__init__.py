@@ -122,8 +122,6 @@ async def async_setup_entry(hass, entry):
         manager.register_event("EndpointList", lambda event, manager=manager, hass=hass, entry=entry: handle_asterisk_event(event, manager, hass, entry))
         cdict = {"Action": "PJSIPShowEndpoints"}
         manager.send_action(cdict)
-
-        sleep(5)
         
         hass.async_create_task(
             hass.config_entries.async_forward_entry_setup(
